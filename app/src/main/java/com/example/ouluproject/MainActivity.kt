@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val tvRegister = findViewById<TextView>(R.id.tvRegister) // Register link
+        val tvRegister = findViewById<TextView>(R.id.tvRegister)
 
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
@@ -26,12 +26,12 @@ class MainActivity : AppCompatActivity() {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
             } else {
-                // Placeholder for actual authentication logic
+
                 Toast.makeText(this, "Login Attempted!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Navigate to RegisterActivity when clicking "Register"
+
         tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
