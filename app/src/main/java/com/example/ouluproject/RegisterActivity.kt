@@ -26,13 +26,13 @@ class RegisterActivity : AppCompatActivity() {
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
-                // Show registration success
+
                 Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show()
 
-                // Redirect to login screen (MainActivity)
+
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish() // Prevents going back to the register screen when pressing back
+                finish()
             }
         }
     }

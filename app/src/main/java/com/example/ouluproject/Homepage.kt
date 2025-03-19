@@ -11,7 +11,7 @@ class Homepage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_homepage) // Updated to new layout file
+        setContentView(R.layout.activity_homepage)
 
         val timeTableButton = findViewById<Button>(R.id.btn_timetable_planner)
         val toDoListButton = findViewById<Button>(R.id.btn_to_do_list)
