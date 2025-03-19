@@ -9,9 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var dbHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        dbHelper = DatabaseHelper(this)
 
         val etName = findViewById<EditText>(R.id.etUsername)
         val etEmail = findViewById<EditText>(R.id.etEmail)
@@ -26,13 +30,16 @@ class RegisterActivity : AppCompatActivity() {
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
+                // Save user to database
+                val success = dbHelper.registerUser(name, email, password)
 
-                Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show()
-
-
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+                if (success) {
+                    Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
