@@ -27,6 +27,11 @@
             android:name=".RegisterActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".Homepage"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>
