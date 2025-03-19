@@ -18,25 +18,25 @@ class MainActivity : AppCompatActivity() {
 
         dbHelper = DatabaseHelper(this)
 
-        val etEmail = findViewById<EditText>(R.id.etEmail)
+        val etUsername = findViewById<EditText>(R.id.etUsername) // Updated to use username
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val tvRegister = findViewById<TextView>(R.id.tvRegister)
 
         btnLogin.setOnClickListener {
-            val email = etEmail.text.toString().trim()
+            val username = etUsername.text.toString().trim() // Using username
             val password = etPassword.text.toString().trim()
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter username and password", Toast.LENGTH_SHORT).show()
             } else {
-                if (dbHelper.validateUser(email, password)) {
+                if (dbHelper.validateUser(username, password)) { // Validate using username
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, Homepage::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
                 }
             }
         }

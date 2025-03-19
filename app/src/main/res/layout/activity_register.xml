@@ -9,27 +9,25 @@
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="425dp"
-        android:layout_height="264dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="330dp"
+        android:layout_height="277dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="Study Sphere Logo"
         android:src="@drawable/study2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:hint="Username"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="249dp" />
+        android:layout_marginTop="4dp"
+        />
 
     <EditText
         android:id="@+id/etEmail"
@@ -39,8 +37,8 @@
         app:layout_constraintTop_toBottomOf="@id/etUsername"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
-
+        android:layout_marginTop="2dp"
+        />
 
     <EditText
         android:id="@+id/etPassword"
@@ -51,18 +49,17 @@
         app:layout_constraintTop_toBottomOf="@id/etEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
-
+        android:layout_marginTop="2dp"
+        />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="56dp"
         android:text="Register"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPassword" />
-
+        android:layout_marginTop="8dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
