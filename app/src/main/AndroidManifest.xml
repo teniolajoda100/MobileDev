@@ -31,6 +31,10 @@
             android:name=".Homepage"
             android:exported="true" />
 
+        <activity
+            android:name=".TimeTableActivity"
+            android:exported="true" />
+
 
     </application>
 

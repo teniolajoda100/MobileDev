@@ -19,10 +19,13 @@ class Homepage : AppCompatActivity() {
         val timerButton = findViewById<Button>(R.id.btn_timer)
 
         // Click to open "TimeTable Planner" page
-     /*   timeTableButton.setOnClickListener {
+        timeTableButton.setOnClickListener {
             val intent = Intent(this, TimeTableActivity::class.java)
             startActivity(intent)
         }
+
+
+        /*
 
         // Click to open "My Tasks" page
         toDoListButton.setOnClickListener {
@@ -40,6 +43,7 @@ class Homepage : AppCompatActivity() {
         timerButton.setOnClickListener {
             val intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
-        }*/
+        }
+    }*/
     }
 }
