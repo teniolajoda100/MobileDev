@@ -8,24 +8,36 @@
     android:background="#F8FAF5"
     tools:context=".Homepage">
 
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/img_profile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:contentDescription="Profile Image"
+        android:src="@drawable/user_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!-- Study Sphere Logo -->
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="330dp"
-        android:layout_height="287dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="195dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="72dp"
         android:contentDescription="Study Sphere Logo"
         android:src="@drawable/study2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Timetable Planner Button -->
     <Button
         android:id="@+id/btn_timetable_planner"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Time Table Planner"
+        android:textColor="#000000"
+        android:backgroundTint="@color/button_blue"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/img_logo"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,9 +46,11 @@
     <!-- To-Do List Button -->
     <Button
         android:id="@+id/btn_to_do_list"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="My Tasks"
+        android:textColor="#000000"
+        android:backgroundTint="@color/button_blue"
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/btn_timetable_planner"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,9 +59,11 @@
     <!-- Study Notes Button -->
     <Button
         android:id="@+id/btn_study_notes"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Study Notes"
+        android:textColor="#000000"
+        android:backgroundTint="@color/button_blue"
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/btn_to_do_list"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,24 +72,29 @@
     <!-- Timer Button -->
     <Button
         android:id="@+id/btn_timer"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Timer"
+        android:textColor="#000000"
+        android:backgroundTint="@color/button_blue"
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/btn_study_notes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Study Globe Image -->
-    <ImageView
-        android:id="@+id/image_globe"
-        android:layout_width="145dp"
-        android:layout_height="163dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="Decorative Image"
-        android:src="@drawable/study2"
+    <!-- Premium ChatBot Button -->
+    <Button
+        android:id="@+id/btn_chatbot"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="AI ChatBot"
+        android:textColor="#000000"
+        android:backgroundTint="@color/button_blue"
+        android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/btn_timer"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Study Globe Image -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
