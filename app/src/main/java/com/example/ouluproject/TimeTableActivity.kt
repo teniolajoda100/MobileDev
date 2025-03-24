@@ -1,5 +1,3 @@
-//TimeTableActivity.kt file for "TimeTable Planner" page
-
 package com.example.ouluproject
 
 import android.graphics.Color
@@ -42,13 +40,13 @@ class TimeTableActivity : AppCompatActivity() {
         val dayInput = dialogView.findViewById<Spinner>(R.id.dayInput)
         val colorInput = dialogView.findViewById<Spinner>(R.id.colorInput)
 
-        // setup for dropdown options for choosing day
-        val days = arrayOf("Choose Day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+        // Setup dropdown options for choosing day
+        val days = arrayOf("Choose Day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
         val dayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         dayInput.adapter = dayAdapter
 
-        // setup dropdown options for choosing colour
+        // Setup dropdown options for choosing colour
         val colors = arrayOf("Choose Colour", "Red", "Orange", "Green", "Blue", "Purple", "Pink")
         val colorAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, colors)
         colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -68,8 +66,11 @@ class TimeTableActivity : AppCompatActivity() {
                     "Wednesday" -> 2
                     "Thursday" -> 3
                     "Friday" -> 4
+                    "Saturday" -> 5
+                    "Sunday" -> 6
                     else -> -1
                 }
+
                 val colorHex = when (selectedColor.lowercase()) {
                     "red" -> "#FF0000"
                     "orange" -> "#FFA500"
@@ -92,14 +93,14 @@ class TimeTableActivity : AppCompatActivity() {
         builder.create().show()
     }
 
-    // gets the existing row or creates a new one for this day
+    // Gets the existing row or creates a new one for this day
     private fun addTaskToDay(task: String, day: Int, color: String) {
         val rowIndex = day + 1
         val row = if (rowIndex < timetableTable.childCount) {
             timetableTable.getChildAt(rowIndex) as TableRow
         } else {
             TableRow(this).apply {
-                for (i in 0 until 5) {
+                for (i in 0 until 7) { // Updated from 5 to 7 to include Saturday and Sunday
                     addView(LinearLayout(this@TimeTableActivity).apply {
                         orientation = LinearLayout.VERTICAL
                         layoutParams = TableRow.LayoutParams(
@@ -113,10 +114,10 @@ class TimeTableActivity : AppCompatActivity() {
             }
         }
 
-        // get the column for the chosen day
+        // Get the column for the chosen day
         val dayColumn = row.getChildAt(day) as LinearLayout
 
-        // create the task view
+        // Create the task view
         val taskView = TextView(this).apply {
             text = task
             setBackgroundColor(Color.parseColor(color))
@@ -129,7 +130,7 @@ class TimeTableActivity : AppCompatActivity() {
             )
         }
 
-        // add the task view to the selected day's column
+        // Add the task view to the selected day's column
         dayColumn.addView(taskView)
     }
 
@@ -142,8 +143,11 @@ class TimeTableActivity : AppCompatActivity() {
                 "Wednesday" -> 2
                 "Thursday" -> 3
                 "Friday" -> 4
+                "Saturday" -> 5
+                "Sunday" -> 6
                 else -> -1
             }
+
             if (dayIndex != -1) {
                 addTaskToDay(task["task"]!!, dayIndex, task["color"]!!)
             }
@@ -152,6 +156,6 @@ class TimeTableActivity : AppCompatActivity() {
 
     private fun resetTable() {
         timetableTable.removeViews(1, timetableTable.childCount - 1)
-        dbHelper.clearTasks() // resets table and clears tasks from database
+        dbHelper.clearTasks() // Resets table and clears tasks from database
     }
 }
