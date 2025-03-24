@@ -49,12 +49,13 @@
         android:layout_weight="1"
         android:layout_marginTop="16dp">
 
-        <!-- Header Row with abbreviations of the days of the week -->
+        <!-- Header Row with all 7 days -->
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_marginTop="8dp">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -97,6 +98,24 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="F"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="S"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="S"
                 android:textStyle="bold"
                 android:padding="8dp" />
         </TableRow>
