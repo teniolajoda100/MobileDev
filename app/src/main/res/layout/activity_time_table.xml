@@ -41,85 +41,85 @@
 
     </LinearLayout>
 
-    <!-- Weekly Table -->
-    <TableLayout
-        android:id="@+id/timetableTable"
+    <!-- Horizontal Scroll View for Swiping -->
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="16dp">
+        android:scrollbars="horizontal">
 
-        <!-- Header Row with all 7 days -->
-        <TableRow
-            android:layout_width="match_parent"
+        <!-- Weekly Table inside Scrollable View -->
+        <TableLayout
+            android:id="@+id/timetableTable"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="16dp">
 
-            <TextView
-                android:layout_width="0dp"
+            <!-- Header Row with Days -->
+            <TableRow
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="M"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="T"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="M"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="W"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="T"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="TH"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="W"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="F"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TH"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="S"
-                android:textStyle="bold"
-                android:padding="8dp" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="F"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="S"
-                android:textStyle="bold"
-                android:padding="8dp" />
-        </TableRow>
-    </TableLayout>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="S"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="S"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
+            </TableRow>
+        </TableLayout>
+    </HorizontalScrollView>
 
     <!-- Reset Button -->
     <Button
