@@ -1,4 +1,4 @@
-//Database file for "My Tasks" page
+//Database file for "My Tasks" page.
 
 package com.example.ouluproject
 
