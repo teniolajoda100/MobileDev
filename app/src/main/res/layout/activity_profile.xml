@@ -1,41 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFFFFF">
+    android:background="#F8FAF5">
 
 
+    <!--back button -->
+    <ImageView
+        android:id="@+id/img_profile2"
+        android:layout_width="135dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="-60dp"
+        android:contentDescription="Profile Picture"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profilepic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_banner" />
 
-
-
-    <!-- return back button thing -->
     <ImageView
         android:id="@+id/btn_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:src="@drawable/back_button"
+        android:layout_width="74dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
         android:contentDescription="Back btn "
+        android:elevation="2dp"
         android:padding="8dp"
+        android:src="@drawable/back_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- My profile header thing -->
     <TextView
         android:id="@+id/textView"
-        android:layout_width="185dp"
-        android:layout_height="35dp"
-        android:text="My Profile"
-        android:textColor="#000000"
-        android:textSize="28sp"
+        android:layout_width="389dp"
+        android:layout_height="43dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="31dp"
+        android:background="#F8FAF5"
+        android:fontFamily="@font/adlam_display"
+        android:gravity="center"
+        android:text="MY PROFILE"
+        android:textColor="#1C1C1C"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--image banner upload thing -->
+    <ImageView
+        android:id="@+id/img_banner"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="4dp"
+        android:background="#EEEEEE"
+        android:clickable="true"
+        android:contentDescription="image banner"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <!-- image profile pic upload -->
+    <ImageView
+        android:id="@+id/img_profile"
+        android:layout_width="135dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="-60dp"
+        android:contentDescription="Profile Picture"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profilepic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_banner" />
+
+    <TextView
+        android:id="@+id/info_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/adlam_display"
+        android:text="BASIC INFO"
+        android:textStyle="bold"
+        android:textColor="#1C1C1C"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="313dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_profile"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
