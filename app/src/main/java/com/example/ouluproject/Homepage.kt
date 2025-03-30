@@ -5,6 +5,7 @@ package com.example.ouluproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
 class Homepage : AppCompatActivity() {
@@ -17,6 +18,11 @@ class Homepage : AppCompatActivity() {
         val toDoListButton = findViewById<Button>(R.id.btn_to_do_list)
         val studyNotesButton = findViewById<Button>(R.id.btn_study_notes)
         val timerButton = findViewById<Button>(R.id.btn_timer)
+        val userProfile = findViewById<ImageView>(R.id.btn_user_profile)
+
+
+
+
 
         // Click to open "TimeTable Planner" page
         timeTableButton.setOnClickListener {
@@ -25,13 +31,20 @@ class Homepage : AppCompatActivity() {
         }
 
 
-
-
         // Click to open "My Tasks" page
         toDoListButton.setOnClickListener {
             val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)
         }
+
+        //Click to open "User Profile" page
+        userProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
         /*
                 // Click to open "Study Notes" page
                 studyNotesButton.setOnClickListener {
