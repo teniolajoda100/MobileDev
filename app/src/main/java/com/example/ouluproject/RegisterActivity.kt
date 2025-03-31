@@ -36,7 +36,13 @@ class RegisterActivity : AppCompatActivity() {
 
                 if (success) {
                     Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, Homepage::class.java))
+                   // startActivity(Intent(this, Homepage::class.java))
+                    val intent = Intent(this,Homepage::class.java)
+                    //This is to pass the info to the basic info thing
+                    intent.putExtra("name", name)
+                    intent.putExtra("email", email)
+                    intent.putExtra("password", password)
+                    startActivity(intent)
                     finish()
                 } else {
                     Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show()
