@@ -46,8 +46,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //for the image view circle thing ??
-    implementation(libs.circleimageview)
+
+
+
 
 
 

@@ -23,16 +23,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--changed android:hint="Username"-->
     <EditText
         android:id="@+id/etUsername"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:hint="Username"
+    android:hint="Email"
     android:inputType="text"
     app:layout_constraintTop_toBottomOf="@id/img_logo"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:layout_marginTop="40dp"/>
+
+
 
     <!-- Password Input -->
     <EditText
@@ -68,5 +71,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
