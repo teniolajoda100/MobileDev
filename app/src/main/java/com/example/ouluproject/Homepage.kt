@@ -43,15 +43,12 @@ class Homepage : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-        /*
-                // Click to open "Study Notes" page
-                studyNotesButton.setOnClickListener {
-                    val intent = Intent(this, NotesActivity::class.java)
-                    startActivity(intent)
-                }
-
+        // Click to open "Study Notes" page
+        studyNotesButton.setOnClickListener {
+            val intent = Intent(this, NotesActivity::class.java)
+            startActivity(intent)
+        }
+/*
                 // Click to open "Study Timer" page
                 timerButton.setOnClickListener {
                     val intent = Intent(this, TimerActivity::class.java)
