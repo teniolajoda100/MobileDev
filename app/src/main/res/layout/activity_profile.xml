@@ -118,39 +118,25 @@
             app:layout_constraintTop_toBottomOf="@id/info_basic">
 
             <!--Lets the user edit info -->
-            <EditText
-                android:id="@+id/editName"
-                android:layout_width="331dp"
+            <TextView
+                android:id="@+id/tvGreeting"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Name" />
+                android:text="Hi, User"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
 
 
-            <EditText
-                android:id="@+id/editEmail"
-                android:layout_width="331dp"
+            <Switch
+                android:id="@+id/switchPremium"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Email" />
+                android:text="Upgrade to Premium"
+                android:layout_marginBottom="16dp" />
 
 
-            <EditText
-                android:id="@+id/editPassword"
-                android:layout_width="331dp"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
 
-
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:text="SAVE CHANGES"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
 
         </LinearLayout>

@@ -3,99 +3,75 @@ package com.example.ouluproject
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Im
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
-class ProfileActivity: AppCompatActivity(){
+class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var imgBanner : ImageView
-    private lateinit var imgProfile : ImageView
-
+    private lateinit var imgBanner: ImageView
+    private lateinit var imgProfile: ImageView
+    private lateinit var dbHelper: DatabaseHelper
+    private lateinit var switchPremium: Switch
+    private lateinit var greetingText: TextView
+    private lateinit var backButton: ImageView
+    private lateinit var logoutButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        dbHelper = DatabaseHelper(this)
 
-        // the back button
-        val backButton = findViewById<ImageView>(R.id.btn_back)
-        backButton.setOnClickListener{
+        imgBanner = findViewById(R.id.img_banner)
+        imgProfile = findViewById(R.id.img_profile)
+        switchPremium = findViewById(R.id.switchPremium)
+        greetingText = findViewById(R.id.tvGreeting)
+        backButton = findViewById(R.id.btn_back)
+        logoutButton = findViewById(R.id.btn_logout)
+
+        val email = intent.getStringExtra("email") ?: ""
+        val name = intent.getStringExtra("name") ?: dbHelper.getNameByEmail(email)
+
+        val user = dbHelper.getUserByEmail(email)
+        val isPremium = user["premium"]?.toString() == "1"
+
+        greetingText.text = "Hi, $name"
+        switchPremium.isChecked = isPremium
+
+        switchPremium.setOnCheckedChangeListener { _, isChecked ->
+            dbHelper.updatePremiumStatus(email, if (isChecked) 1 else 0)
+            Toast.makeText(this,
+                if (isChecked) "You're now a Premium user!" else "Premium removed.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        backButton.setOnClickListener {
             finish()
-        } // end for button
+        }
 
-        //logout button that returns to the login page.
-        val logoutButton = findViewById<Button>(R.id.btn_logout)
-        logoutButton.setOnClickListener{
+        logoutButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()
         }
 
-
-
-
-        imgBanner = findViewById(R.id.img_banner)
-        imgProfile = findViewById(R.id.img_profile)
-
-
-        //let the user upload the banner and profile pic??
-
-        imgBanner.setOnClickListener{
+        imgBanner.setOnClickListener {
             bannerPicker.launch("image/*")
         }
-        imgProfile.setOnClickListener{
+
+        imgProfile.setOnClickListener {
             profilePicker.launch("image/*")
         }
-
-        //This should show under basic info should also let the user edit and update
-        val name = findViewById<EditText>(R.id.editName)
-        val email = findViewById<EditText>(R.id.editEmail)
-        val password = findViewById<EditText>(R.id.editPassword)
-
-        //data from intent
-        val RegisName = intent.getStringExtra("name")
-        val RegisEmail = intent.getStringExtra("email")
-        val RegisPassword = intent.getStringExtra("Password")
-
-        //set values in fields
-        name.setText(RegisName)
-        email.setText(RegisEmail)
-        password.setText(RegisPassword)
-
-
-        //for the save button
-        val saveButton = findViewById<Button>(R.id.btn_save)
-        saveButton.setOnClickListener {
-            val updatedName = name.text.toString().trim()
-            val updatedEmail = email.text.toString().trim()
-            val updatedPassword = password.text.toString().trim()
-
-            Toast.makeText(this, "Profile Updated!", Toast.LENGTH_SHORT).show()
-        }
-
-
-
-    }//end of on-create
-
-    private val bannerPicker = registerForActivityResult(ActivityResultContracts.GetContent()){
-        uri: Uri? -> uri?.let { imgBanner.setImageURI(it) }
     }
-    private val profilePicker = registerForActivityResult(ActivityResultContracts.GetContent()){
+
+    private val bannerPicker = registerForActivityResult(ActivityResultContracts.GetContent()) {
+            uri: Uri? -> uri?.let { imgBanner.setImageURI(it) }
+    }
+
+    private val profilePicker = registerForActivityResult(ActivityResultContracts.GetContent()) {
             uri: Uri? -> uri?.let { imgProfile.setImageURI(it) }
     }
-
-
-
-
-
-
-
-} //end
-
-
+}

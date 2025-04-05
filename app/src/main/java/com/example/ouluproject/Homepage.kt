@@ -18,11 +18,17 @@ class Homepage : AppCompatActivity() {
         val toDoListButton = findViewById<Button>(R.id.btn_to_do_list)
         val studyNotesButton = findViewById<Button>(R.id.btn_study_notes)
         val timerButton = findViewById<Button>(R.id.btn_timer)
+
         val userProfile = findViewById<ImageView>(R.id.btn_user_profile)
+        userProfile.setOnClickListener {
+            val email = intent.getStringExtra("email")
+            val name = intent.getStringExtra("name")
 
-
-
-
+            val profileIntent = Intent(this, ProfileActivity::class.java)
+            profileIntent.putExtra("email", email)
+            profileIntent.putExtra("name", name)
+            startActivity(profileIntent)
+        }
 
         // Click to open "TimeTable Planner" page
         timeTableButton.setOnClickListener {
@@ -30,16 +36,9 @@ class Homepage : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         // Click to open "My Tasks" page
         toDoListButton.setOnClickListener {
             val intent = Intent(this, TasksActivity::class.java)
-            startActivity(intent)
-        }
-
-        //Click to open "User Profile" page
-        userProfile.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
@@ -48,12 +47,13 @@ class Homepage : AppCompatActivity() {
             val intent = Intent(this, NotesActivity::class.java)
             startActivity(intent)
         }
-/*
-                // Click to open "Study Timer" page
-                timerButton.setOnClickListener {
-                    val intent = Intent(this, TimerActivity::class.java)
-                    startActivity(intent)
-                }
-            }*/
+
+        /*
+        // Click to open "Study Timer" page
+        timerButton.setOnClickListener {
+            val intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
+        }
+        */
     }
 }
