@@ -61,6 +61,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "users.db", n
         if (cursor.moveToFirst()) {
             data["name"] = cursor.getString(0)
             data["premium"] = cursor.getInt(1)
+
         }
         cursor.close()
         db.close()
@@ -87,6 +88,22 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "users.db", n
         db.close()
         return name
     }
+
+
+    //update the email thing?
+    fun updateEmail(oldEmail: String, newEmail: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("email", newEmail)
+        }
+        val result = db.update("users", values, "email = ?", arrayOf(oldEmail))
+        db.close()
+        return result > 0
+    }
+
+
+
+
 
 
 

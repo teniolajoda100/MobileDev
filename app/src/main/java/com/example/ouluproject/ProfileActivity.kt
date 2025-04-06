@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class ProfileActivity : AppCompatActivity() {
@@ -33,6 +34,7 @@ class ProfileActivity : AppCompatActivity() {
         val email = intent.getStringExtra("email") ?: ""
         val name = intent.getStringExtra("name") ?: dbHelper.getNameByEmail(email)
 
+
         val user = dbHelper.getUserByEmail(email)
         val isPremium = user["premium"]?.toString() == "1"
 
@@ -46,6 +48,53 @@ class ProfileActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+
+        //showing user password
+        val userPassword = findViewById<TextView>(R.id.userPass)
+        val password = user["password"]?.toString() ?: ""
+        val maskedPassword = "*".repeat(8)
+
+        userPassword.text = "Password: $maskedPassword"
+
+
+        //showing user email
+        val userEmail = findViewById<TextView>(R.id.userEmail)
+        userEmail.text = "Email: $email"
+        val btnEditProfile = findViewById<Button>(R.id.btnEditProfile)
+
+        btnEditProfile.setOnClickListener {
+            val editText = EditText(this)
+            editText.setText(email) // current email
+
+            //make the alert box prompt
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Edit Email")
+                .setMessage("Enter your new email address")
+                .setView(editText)
+                .setPositiveButton("Save") { _, _ ->
+                    val newEmail = editText.text.toString().trim()
+
+                    //validation
+                    if (newEmail.isEmpty()) {
+                        Toast.makeText(this, "Email can't be empty", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val updated = dbHelper.updateEmail(email, newEmail)
+                        if (updated) {
+                            Toast.makeText(this, "Email updated!", Toast.LENGTH_SHORT).show()
+                            userEmail.text = "Email: $newEmail"
+                        } else {
+                            Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                .setNegativeButton("Cancel", null)
+                .create()
+
+            dialog.show()
+        }
+
+
 
         backButton.setOnClickListener {
             finish()
@@ -65,6 +114,10 @@ class ProfileActivity : AppCompatActivity() {
         imgProfile.setOnClickListener {
             profilePicker.launch("image/*")
         }
+
+
+        //user info
+       // greetingText.text = "Email: $email"
     }
 
     private val bannerPicker = registerForActivityResult(ActivityResultContracts.GetContent()) {
