@@ -18,6 +18,7 @@ class Homepage : AppCompatActivity() {
         val toDoListButton = findViewById<Button>(R.id.btn_to_do_list)
         val studyNotesButton = findViewById<Button>(R.id.btn_study_notes)
         val timerButton = findViewById<Button>(R.id.btn_timer)
+        val chatbotButton = findViewById<Button>(R.id.btn_chatbot)
 
         val userProfile = findViewById<ImageView>(R.id.btn_user_profile)
         userProfile.setOnClickListener {
@@ -52,6 +53,11 @@ class Homepage : AppCompatActivity() {
         // Click to open "Study Timer" page
         timerButton.setOnClickListener {
             val intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
+        }
+        // Click to open "AI ChatBot" page
+        chatbotButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
         }
 

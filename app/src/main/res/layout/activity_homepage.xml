@@ -19,8 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
     <!-- Study Sphere Logo -->
     <ImageView
         android:id="@+id/img_logo"
@@ -96,7 +94,5 @@
         app:layout_constraintTop_toBottomOf="@id/btn_timer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Study Globe Image -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
