@@ -70,12 +70,12 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/secondsInput"
+            android:id="@+id/minutesInput"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/rounded_edittext_background"
             android:gravity="center"
-            android:hint="SS"
+            android:hint="MM"
             android:inputType="number" />
 
         <TextView
@@ -85,12 +85,12 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/minutesInput"
+            android:id="@+id/secondsInput"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/rounded_edittext_background"
             android:gravity="center"
-            android:hint="MM"
+            android:hint="SS"
             android:inputType="number" />
 
     </LinearLayout>
