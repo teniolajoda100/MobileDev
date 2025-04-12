@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Image banner -->
+    <ImageView
+        android:id="@+id/img_banner"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="4dp"
+        android:background="#EEEEEE"
+        android:clickable="true"
+        android:contentDescription="image banner"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Profile picture -->
+    <ImageView
+        android:id="@+id/img_profile"
+        android:layout_width="135dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="-60dp"
+        android:contentDescription="Profile Picture"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profilepic"
+        app:layout_constraintTop_toBottomOf="@id/img_banner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13" />
+
+    <!--logout button -->
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp" />
+
+
+    <!--basic info-->
+    <TextView
+        android:id="@+id/info_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/adlam_display"
+        android:text="BASIC INFO"
+        android:textColor="#1C1C1C"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+
+
+    <LinearLayout
+        android:id="@+id/info_box"
+        android:layout_width="362dp"
+        android:layout_height="357dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="#F8FAF5"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_basic">
+
+        <!--Lets the user edit info -->
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Hi, User"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_width="328dp"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/userPass"
+            android:layout_width="328dp"
+            android:layout_height="wrap_content"
+            android:text="Password:******** "
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="90dp"
+                android:layout_height="36dp"
+                android:backgroundTint="#778899"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Edit"
+                android:textSize="12dp"
+                android:textColor="#333333">
+
+
+            </Button>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchPremium"
+            android:layout_width="332dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Upgrade to Premium" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

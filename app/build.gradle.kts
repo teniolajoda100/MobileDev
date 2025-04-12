@@ -46,6 +46,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //tab layout
+    implementation(libs.material.v1110)
+    implementation(libs.material)
+
 
 
 
