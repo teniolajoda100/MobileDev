@@ -25,6 +25,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material-v1110 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:2.9.0"
+okhttp = "com.squareup.okhttp3:okhttp:4.9.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
