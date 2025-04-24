@@ -23,6 +23,9 @@ class TimerActivity : AppCompatActivity() {
     private var countDownTimer: CountDownTimer? = null
     private var isTimerRunning = false
 
+    //records fro daily stats
+    private var totalTimeInMillis: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
@@ -66,7 +69,8 @@ class TimerActivity : AppCompatActivity() {
         val seconds = secondsInput.text.toString().toIntOrNull() ?: 0
 
         // calculate the total time in milliseconds
-        val totalTimeInMillis = (hours * 3600 + minutes * 60 + seconds) * 1000L
+        //changed the val, add later if it doesn't work
+        totalTimeInMillis = (hours * 3600 + minutes * 60 + seconds) * 1000L
 
         if (totalTimeInMillis == 0L) {
             Toast.makeText(this, "Please set a valid timer!", Toast.LENGTH_SHORT).show()
@@ -87,6 +91,7 @@ class TimerActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                recordTimeUsed(totalTimeInMillis)
                 // notify the user when the timer finishes
                 resetTimer()
                 Toast.makeText(this@TimerActivity, "Time's up!", Toast.LENGTH_SHORT).show()
@@ -99,6 +104,7 @@ class TimerActivity : AppCompatActivity() {
     // display that timer has stopped
     private fun stopTimer() {
         countDownTimer?.cancel()
+        recordTimeUsed(totalTimeInMillis) //records the time you can delete later
         isTimerRunning = false
         Toast.makeText(this, "Timer stopped.", Toast.LENGTH_SHORT).show()
     }
@@ -111,5 +117,14 @@ class TimerActivity : AppCompatActivity() {
         minutesInput.setText("00")
         secondsInput.setText("00")
         Toast.makeText(this, "Timer reset.", Toast.LENGTH_SHORT).show()
+    }
+
+    //you can delete if it doesn't work
+    private fun recordTimeUsed(durationMillis: Long) {
+        val sharedPref = getSharedPreferences("daily_stats", MODE_PRIVATE)
+        val today = java.text.SimpleDateFormat("yyyy-MM-dd").format(java.util.Date())
+        val currentTotal = sharedPref.getLong(today, 0L)
+        val updatedTotal = currentTotal + durationMillis
+        sharedPref.edit().putLong(today, updatedTotal).apply()
     }
 }

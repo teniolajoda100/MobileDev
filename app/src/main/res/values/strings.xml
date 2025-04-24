@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Ouluproject</string>
+
+
+    <!--should show the data from previous week? -->
+    <string-array name="stat_options">
+        <item>Select Stat</item>
+        <item>Last Week</item>
+    </string-array>
+
+
 </resources>

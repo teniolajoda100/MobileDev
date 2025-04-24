@@ -44,5 +44,4 @@ class ProfileActivity : AppCompatActivity() {
 
 
 
-    }
-
+}

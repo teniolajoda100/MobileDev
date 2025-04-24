@@ -120,7 +120,7 @@ class TabOneFragment : Fragment() {
                 .show()
         }
 
-        
+
 
         // Set onClickListeners to pick images
         imgBanner.setOnClickListener {
@@ -139,4 +139,3 @@ class TabOneFragment : Fragment() {
 
     }
 }
-
