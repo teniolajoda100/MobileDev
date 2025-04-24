@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    // Retrofit instance with dynamic API key support
+    // retrofit instance with dynamic API key support
     private fun getInstance(apiKey: String): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor { chain ->

@@ -60,35 +60,35 @@ class ChatActivity : AppCompatActivity() {
         val messages = listOf(Message(role = "user", content = message))
         val request = ChatRequest(messages = messages)
 
-        // Get API key from BuildConfig
-        val apiKey = BuildConfig.OPENAI_API_KEY  // Make sure the key is stored correctly
+        // get API key from BuildConfig
+        val apiKey = BuildConfig.OPENAI_API_KEY
 
-        Log.d("API_KEY", apiKey)  // You can log the API key here for debugging purposes
+        Log.d("API_KEY", apiKey)
 
-        // Make sure Retrofit instance is created using the provided API key
+        // making sure Retrofit instance is created using the provided API key
         RetrofitInstance.getOpenAIService(apiKey).sendMessage(request).enqueue(object : Callback<ChatResponse> {
             override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
                 if (response.isSuccessful) {
-                    // Log the successful response for debugging
+                    // log the successful response for debugging
                     val aiResponse = response.body()?.choices?.firstOrNull()?.message?.content
                     aiResponse?.let {
-                        // Display AI's response in chat
+                        // display  response in chat
                         chatAdapter.addMessage("ChatBot: $it")
                     }
                 } else {
-                    // Log the error details from the response
+
                     val errorResponse = response.errorBody()?.string()
                     Log.e("ChatActivity", "Error Response: $errorResponse")
                     Log.e("ChatActivity", "Error Code: ${response.code()}")
-                    // Show a generic error message
+                    //  error message
                     chatAdapter.addMessage("ChatBot: Error occurred. ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
                 Log.e("ChatActivity", "API Call Failed: ${t.message}", t)
-                t.printStackTrace() // Print stack trace for detailed error information
-                // Show a user-friendly error message.
+                t.printStackTrace()
+                // show a user-friendly error message.
                 chatAdapter.addMessage("ChatBot: Failed to get response. Please try again.")
             }
         })
