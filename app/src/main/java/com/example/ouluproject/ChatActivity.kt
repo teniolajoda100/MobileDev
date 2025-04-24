@@ -65,30 +65,30 @@ class ChatActivity : AppCompatActivity() {
 
         Log.d("API_KEY", apiKey)
 
-        // making sure Retrofit instance is created using the provided API key
+        // mak sure Retrofit instance is created using the provided API key
         RetrofitInstance.getOpenAIService(apiKey).sendMessage(request).enqueue(object : Callback<ChatResponse> {
             override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
                 if (response.isSuccessful) {
-                    // log the successful response for debugging
+                    // Log the successful response for debugging
                     val aiResponse = response.body()?.choices?.firstOrNull()?.message?.content
                     aiResponse?.let {
-                        // display  response in chat
+                        // Display AI's response in chat
                         chatAdapter.addMessage("ChatBot: $it")
                     }
                 } else {
-
+                    // Log the error details from the response
                     val errorResponse = response.errorBody()?.string()
                     Log.e("ChatActivity", "Error Response: $errorResponse")
                     Log.e("ChatActivity", "Error Code: ${response.code()}")
-                    //  error message
+                    // Show a generic error message
                     chatAdapter.addMessage("ChatBot: Error occurred. ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
                 Log.e("ChatActivity", "API Call Failed: ${t.message}", t)
-                t.printStackTrace()
-                // show a user-friendly error message.
+                t.printStackTrace() // Print stack trace for detailed error information
+                // Show a user-friendly error message.
                 chatAdapter.addMessage("ChatBot: Failed to get response. Please try again.")
             }
         })
